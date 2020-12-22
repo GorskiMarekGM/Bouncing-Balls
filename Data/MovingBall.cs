@@ -1,6 +1,6 @@
 using System;
 
-namespace Multithreading.Data
+namespace BouncingBalls.Data
 {
 
     public class MovingBall
@@ -11,6 +11,12 @@ namespace Multithreading.Data
         private int delthaX, delthaY;
         private int limitMinX, limitMaxX;
         private int limitMinY, limitMaxY;
+        
+        private double rightBoundrey;
+        private double topBoundry;
+        private double leftBoundry;
+        private double bottomBoundry;
+        private double radius;
 
         public MovingBall(int initialX, int initialY) {
             this.x = initialX;
@@ -19,6 +25,7 @@ namespace Multithreading.Data
             this.delthaY=1;
             this.limitMinX=0;
             this.limitMaxX=100;
+            this.radius=1;
         }
 
         public void setVelocity(int diffX,int diffY) {
@@ -43,6 +50,16 @@ namespace Multithreading.Data
             this.delthaX *= -1;
             if(this.y<this.limitMinY || this.y>this.limitMaxY)
             this.delthaY *= -1;
-            }
+        }
+
+        // Boundaries
+
+        public void setBounds(double right, double top, double left, double bottom) 
+        {
+            this.rightBoundrey = right - this.radius - Math.Abs(this.delthaX);
+            this.topBoundry = top - this.radius - Math.Abs(this.delthaY);
+            this.leftBoundry = left + this.radius + Math.Abs(this.delthaX);
+            this.bottomBoundry = bottom + this.radius + Math.Abs(this.delthaY);
+        }
     }
 }

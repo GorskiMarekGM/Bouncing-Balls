@@ -15,7 +15,7 @@
 <br>
 
 <button class="btn btn-primary" @onclick="StartAnimation">Start</button>
-<button class="btn btn-primary" @onclick="StoptAnimation">Stop</button>
+<button class="btn btn-primary" @onclick="StopAnimation">Stop</button>
 
 @code {
     
@@ -52,7 +52,7 @@
         mytimer.Start();
         currentCount++;
     }
-    private void StoptAnimation()
+    private void StopAnimation()
     {
         mytimer.Stop();
     }
