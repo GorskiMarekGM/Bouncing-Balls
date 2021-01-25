@@ -45,6 +45,39 @@
         }
       },
       {
+        "HashCode": 69166225,
+        "Kind": "Components.Component",
+        "Name": "BouncingBalls.Pages.Index",
+        "AssemblyName": "BouncingBalls",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BouncingBalls.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 198475256,
+        "Kind": "Components.Component",
+        "Name": "BouncingBalls.Pages.Index",
+        "AssemblyName": "BouncingBalls",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BouncingBalls.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BouncingBalls.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -47978888,
         "Kind": "Components.Component",
         "Name": "BouncingBalls.Pages.Error",
@@ -107,39 +140,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "BouncingBalls.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 69166225,
-        "Kind": "Components.Component",
-        "Name": "BouncingBalls.Pages.Index",
-        "AssemblyName": "BouncingBalls",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BouncingBalls.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 198475256,
-        "Kind": "Components.Component",
-        "Name": "BouncingBalls.Pages.Index",
-        "AssemblyName": "BouncingBalls",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BouncingBalls.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BouncingBalls.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
