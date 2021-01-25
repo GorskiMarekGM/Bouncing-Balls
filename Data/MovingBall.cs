@@ -11,12 +11,8 @@ namespace BouncingBalls.Data
         private int delthaX, delthaY;
         private int limitMinX, limitMaxX;
         private int limitMinY, limitMaxY;
-        
-        private double rightBoundrey;
-        private double topBoundry;
-        private double leftBoundry;
-        private double bottomBoundry;
-        private double radius;
+        private double radius = 5;
+        public bool IsHit = false;
 
         public MovingBall(int initialX, int initialY) {
             this.x = initialX;
@@ -25,7 +21,6 @@ namespace BouncingBalls.Data
             this.delthaY=1;
             this.limitMinX=0;
             this.limitMaxX=100;
-            this.radius=1;
         }
 
         public void setVelocity(int diffX,int diffY) {
@@ -51,15 +46,24 @@ namespace BouncingBalls.Data
             if(this.y<this.limitMinY || this.y>this.limitMaxY)
             this.delthaY *= -1;
         }
-
-        // Boundaries
-
-        public void setBounds(double right, double top, double left, double bottom) 
+        public double CalculateDistance(MovingBall ball)
         {
-            this.rightBoundrey = right - this.radius - Math.Abs(this.delthaX);
-            this.topBoundry = top - this.radius - Math.Abs(this.delthaY);
-            this.leftBoundry = left + this.radius + Math.Abs(this.delthaX);
-            this.bottomBoundry = bottom + this.radius + Math.Abs(this.delthaY);
+            return Math.Sqrt(Math.Pow((ball.x - this.x), 2) + Math.Pow((ball.y - this.y), 2));
+        }
+
+        public bool Hit(MovingBall ball)
+        {
+            if (this.CalculateDistance(ball) <= this.radius ||
+                this.CalculateDistance(ball) <= ball.radius)
+            {
+                ball.color = "#FF0000";
+                this.color = "#FF0000";
+                ball.IsHit = true;
+                this.IsHit = true;
+
+                return true;
+            }
+            else return false;
         }
     }
 }

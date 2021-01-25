@@ -45,6 +45,39 @@
         }
       },
       {
+        "HashCode": -106327492,
+        "Kind": "Components.Component",
+        "Name": "BouncingBalls.Pages.Counter",
+        "AssemblyName": "BouncingBalls",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BouncingBalls.Pages.Counter"
+        }
+      },
+      {
+        "HashCode": 1009567471,
+        "Kind": "Components.Component",
+        "Name": "BouncingBalls.Pages.Counter",
+        "AssemblyName": "BouncingBalls",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BouncingBalls.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BouncingBalls.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -47978888,
         "Kind": "Components.Component",
         "Name": "BouncingBalls.Pages.Error",
@@ -140,39 +173,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "BouncingBalls.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -106327492,
-        "Kind": "Components.Component",
-        "Name": "BouncingBalls.Pages.Counter",
-        "AssemblyName": "BouncingBalls",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BouncingBalls.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": 1009567471,
-        "Kind": "Components.Component",
-        "Name": "BouncingBalls.Pages.Counter",
-        "AssemblyName": "BouncingBalls",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BouncingBalls.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BouncingBalls.Pages.Counter",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -14734,7 +14734,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 900
+    "CSharpLanguageVersion": 800
   },
   "RootNamespace": "BouncingBalls",
   "Documents": [
