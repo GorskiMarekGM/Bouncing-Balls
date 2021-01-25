@@ -11,7 +11,7 @@ namespace BouncingBalls.Data
         private int delthaX, delthaY;
         private int limitMinX, limitMaxX;
         private int limitMinY, limitMaxY;
-        private double radius = 5;
+        public int radius = 5;
         public bool IsHit = false;
 
         public MovingBall(int initialX, int initialY) {

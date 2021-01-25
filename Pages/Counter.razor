@@ -7,34 +7,49 @@
 
 <p>Current count: @currentCount</p>
 <svg width="200" height="200">
-    @foreach (var ball in balls)
+    @foreach (var ball in balls.ToList())
     {
-        <circle cx="@ball.x" cy="@ball.y" r="5" fill="@ball.color"></circle>
+        <circle cx="@ball.x" cy="@ball.y" r="@ball.radius" fill="@ball.color"></circle>
     }
 </svg>
 <br>
 
+<p>Number of red balls: @redBalls</p>
+<p>Number of green balls: @greenBalls</p>
 <button class="btn btn-primary" @onclick="StartAnimation">Start</button>
 <button class="btn btn-primary" @onclick="StopAnimation">Stop</button>
+
+@{
+    if (currentCount == 0)
+    {
+        InitBalls(RED_BALLS_COUNT, true);
+        InitBalls(GREEN_BALLS_COUNT);
+    }
+}
 
 @code {
     
     private static int currentCount = 0;
-    private int sense = 1;
-    private int x = 50, y = 50;
-    static Timer mytimer = new Timer();
+    static Timer move = new Timer();
+    static Timer collission = new Timer();
+    
+    private const int RED_BALLS_COUNT = 1;
+    private const int GREEN_BALLS_COUNT = 49;
+    private int redBalls = RED_BALLS_COUNT;
+    private int greenBalls = GREEN_BALLS_COUNT;
     List<MovingBall> balls = new List<MovingBall>();
 
-    private void init_balls(){
+    private void InitBalls(int count, bool isHit = false){
         Random random = new Random(230);
         MovingBall p;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < count; i++)
         {
             int x = random.Next(10,190);
             int y = random.Next(10,190);
             p = new MovingBall(x,y);
-            p.color = "#ABE280";
+            p.color = isHit ? "#FF0000":"#ABE280";
+            p.IsHit = isHit;
             p.setLimitX(10,190);
             p.setLimitY(10,190);
             x=random.Next(0,4);
@@ -46,15 +61,20 @@
     }
     private void StartAnimation()
     {
-        init_balls();
-        mytimer.Interval = 50;
-        mytimer.Elapsed += Animation;
-        mytimer.Start();
+        move.Interval = 50;
+        move.Elapsed += Animation;
+        move.Start();
+
+        collission.Interval = 100;
+        collission.Elapsed += CollissionCheck;
+        collission.Start();
+
         currentCount++;
     }
     private void StopAnimation()
     {
-        mytimer.Stop();
+        move.Stop();
+        collission.Stop();
     }
 
     private void Animation(object sender, EventArgs e)
@@ -67,5 +87,34 @@
         }
 
         InvokeAsync(StateHasChanged);
+
+        if (balls.All((item) => item.IsHit)) {
+            StopAnimation();
+        }
+    }
+
+    private void CollissionCheck(object sender, EventArgs e)
+    {
+        int numberOfCollisions = 0;
+
+        for (int i = 0; i < balls.Count - 1; i++)
+        {
+            if ((balls[i].CalculateDistance(balls[i + 1]) <= balls[i].radius ||
+                balls[i].CalculateDistance(balls[i + 1]) <= balls[i + 1].radius) &&
+                (!balls[i].IsHit || !balls[i + 1].IsHit))
+            {
+                balls[i].Hit(balls[i + 1]);
+                redBalls++;
+                greenBalls--;
+
+                if (greenBalls == 0) {
+                    StopAnimation();
+                }
+
+                System.Console.WriteLine($"Collision detected on position ({balls[i].x},{balls[i].y}) ({balls[i + 1].x},{balls[i + 1].y})");
+                numberOfCollisions++;
+            }           
+        }
+        System.Console.WriteLine($"Total number of collisions in this step - {numberOfCollisions}");
     }
 }
